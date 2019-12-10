@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package com.chaos.im.protocol;
+
+message MessagePushRequest {
+    string senderId = 1;
+    string receiverId = 2;
+    string groupId = 3;
+    string content = 4;
+    int64 timestamp = 5;
+    string messageId = 6;
+    string senderPortraitUrl = 7;
+    string senderNickname = 8;
+}
