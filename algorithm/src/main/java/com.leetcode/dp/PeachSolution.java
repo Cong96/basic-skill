@@ -6,4 +6,8 @@ package com.leetcode.dp;
  * @Description: 桃子问题
  */
 public class PeachSolution {
+    public int pick(int[] peaches){
+
+        return 0;
+    }
 }
