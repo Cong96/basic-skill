@@ -4,19 +4,29 @@ package com.leetcode.dp;
  * @Author: BryantCong
  * @Date: 2019/12/12 10:58
  * @Description: 最大回文子串
- *
+ * <p>
+ * <p>
+ * 动态规划的实现分为两种，有递归和迭代。
+ * 递归一般是自顶向下，依赖于子问题优化函数的结果，只有子问题完全求出，也就是子问题的递归返回结果，原问题才能求解。
+ * <p>
+ * 迭代法，就是巧妙的安排求解顺序，从最小的子问题开始，自下而上求解。每次求新的问题时，子问题的解已经计算出来了。
+ * <p>
+ * 作者：郑不知
+ * 链接：https://www.zhihu.com/question/27363814/answer/36327479
+ * 来源：知乎
+ * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
  * 回文子串
- *
+ * <p>
  * 状态转移方程
  * dp[i][j] = (a[i]==a[j])&&dp[i+1][j-1];
- *
+ * <p>
  * 为什么可以用动态规划呢？
  * 因为
  */
 public class LongestSubPalindromeSolution {
 
 
-    public String longestSubPalindrome(String s){
+    public String longestSubPalindrome(String s) {
         int len = s.length();
         if (len <= 1) {
             return s;
