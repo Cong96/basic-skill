@@ -14,4 +14,36 @@ public class BuildTreeSolution {
     public TreeNode buildTree1(int[] preorder, int[] inorder) {
         return null;
     }
+
+    public static TreeNode reConstructBinaryTreeByOrderAndPre(int[] pre, int preStart, int preEnd, int[] in, int inStart, int inEnd) {
+
+        if (preStart > preEnd || inStart > inEnd) {
+            return null;
+        }
+        TreeNode root = new TreeNode(pre[preStart]);
+        for (int i = inStart; i <= inEnd; i++) {
+            if (pre[preStart] == in[i]) {
+                root.left = reConstructBinaryTreeByOrderAndPre(pre, preStart + 1, i - inStart + preStart, in, inStart, i - 1);
+                root.left = reConstructBinaryTreeByOrderAndPre(pre, i - inStart + preStart + 1, inEnd, in, i + 1, inEnd);
+                break;
+            }
+        }
+        return root;
+    }
+
+    public static TreeNode reConstructBinaryTreeByOrderAndPost(int[] post, int postStart, int postEnd, int[] in, int inStart, int inEnd) {
+
+        if (postStart > postEnd || inStart > inEnd) {
+            return null;
+        }
+        TreeNode root = new TreeNode(post[postEnd]);
+        for (int i = inStart; i <= inEnd; i++) {
+            if (post[postEnd] == in[i]) {
+                root.left = reConstructBinaryTreeByOrderAndPost(post, postStart, postStart + i - inStart, in, inStart, i - 1);
+                root.right = reConstructBinaryTreeByOrderAndPost(post, postStart + i - inStart + 1, postEnd - 1, in, i + 1, inEnd);
+                break;
+            }
+        }
+        return root;
+    }
 }
