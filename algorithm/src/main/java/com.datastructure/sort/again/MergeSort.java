@@ -4,6 +4,7 @@ package com.datastructure.sort.again;
  * @Author: BryantCong
  * @Date: 2020/1/2 19:24
  * @Description: 归并排序
+ * 先是两两排序，然后4个排序，然后8个排序等等，，，，
  */
 public class MergeSort {
 
