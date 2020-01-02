@@ -8,11 +8,11 @@ package com.datastructure.tree;
 public class BuildTreeSolution {
 
     public TreeNode buildTree(int[] inorder, int[] postorder) {
-        return null;
+        return reConstructBinaryTreeByOrderAndPost(postorder, 0, postorder.length - 1, inorder, 0, inorder.length - 1);
     }
 
     public TreeNode buildTree1(int[] preorder, int[] inorder) {
-        return null;
+        return reConstructBinaryTreeByOrderAndPre(preorder, 0, preorder.length - 1, inorder, 0, inorder.length - 1);
     }
 
     public static TreeNode reConstructBinaryTreeByOrderAndPre(int[] pre, int preStart, int preEnd, int[] in, int inStart, int inEnd) {

@@ -12,8 +12,20 @@
         <module>java-se-core</module>
         <module>protobuf-demo</module>
         <module>algorithm</module>
+        <module>resttemplate-demo</module>
+        <module>rest-demo</module>
+        <module>mq-demo</module>
     </modules>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.19.RELEASE</version>
+    </parent>
 
+    <!--<dependencyManagement>-->
+
+    <!--<dependencies></dependencies>-->
+<!--</dependencyManagement>-->
     <build>
         <pluginManagement>
             <plugins>

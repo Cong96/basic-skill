@@ -25,28 +25,25 @@ public class LongestSubPalindromeSolution {
     }
 
     public String longestSubPalindrome(String s) {
-        if (s == null) {
-            return null;
-        }
-        //边界条件先处理
-        if (s.length() <= 1) {
+        if (s == null || s.length() <= 1) {
             return s;
         }
-        boolean dp[][] = new boolean[s.length()][s.length()];
-        Integer maxLen = 1;
-        Integer start = 0;
+        int start = 0;
+        int maxLength = 1;
+        boolean[][] dp = new boolean[s.length()][s.length()];
         for (int right = 1; right < s.length(); right++) {
             for (int left = 0; left < right; left++) {
-                //right-left<=2证明中间最多只有一个元素，那么这种情况下，left,right区间构成的子串必然是回文的
-                if (s.charAt(left) == s.charAt(right) && (right - left <= 2 || dp[left + 1][right - 1])) {
-                    dp[left][right] = true;
-                    if (right - left + 1 > maxLen) {
-                        maxLen = right - left + 1;
-                        start = left;
+                if (s.charAt(right) == s.charAt(left)) {
+                    if (right - left <= 2 || dp[left + 1][right - 1]) {
+                        dp[left][right] = true;
+                        if (right - left + 1 > maxLength) {
+                            maxLength = right - left + 1;
+                            start = left;
+                        }
                     }
                 }
             }
         }
-        return maxLen == 1 ? s.substring(0, 1) : s.substring(start, start + maxLen);
+        return s.substring(start, maxLength);
     }
 }

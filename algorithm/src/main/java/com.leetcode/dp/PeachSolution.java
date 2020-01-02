@@ -27,6 +27,7 @@ public class PeachSolution {
     public int pick(int[] peaches) {
 
         int[] dp = new int[peaches.length];
+
         dp[0] = 1;
         for (int right = 1; right < peaches.length; right++) {
             //初始化为1，默认前面的元素都不小于他

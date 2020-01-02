@@ -63,7 +63,7 @@ public class InOrderTraversalSolution {
         while (!stack.empty()) {
             ColoredTreeNode cn = stack.pop();
 
-            if (cn.color.equals("white")) {
+            if (cn.color ==NodeColor.RED){
                 if (cn.node.right != null) {
                     stack.push(new ColoredTreeNode(cn.node.right, NodeColor.RED));
                 }
@@ -71,7 +71,7 @@ public class InOrderTraversalSolution {
                 if (cn.node.left != null) {
                     stack.push(new ColoredTreeNode(cn.node.left, NodeColor.RED));
                 }
-            } else {
+            } else{
                 res.add(cn.node.val);
             }
         }

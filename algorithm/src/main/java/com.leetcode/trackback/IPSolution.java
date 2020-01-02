@@ -33,6 +33,9 @@ public class IPSolution {
         }
         //遍历选择列表
         for (int i = 1; i <= 3; i++) {
+            if (pos + i > ip.length()) {
+                break;
+            }
             String ipV4Part = ip.substring(pos, pos + i);
             //排除不符合条件的选择
             if (ipV4Part.startsWith("0") || (ipV4Part.length() == 3 && Integer.valueOf(ipV4Part) > 255)) {
