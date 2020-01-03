@@ -56,21 +56,6 @@ public class ValidBSTSolution {
     }
 
     public boolean isValiBSTByInorder(TreeNode treeNode) {
-        Stack<TreeNode> treeNodeStack = new Stack<>();
-        double inorder = -Double.MAX_VALUE;
-        TreeNode cur = treeNode;
-        while (cur != null || !treeNodeStack.isEmpty()) {
-            while (cur != null) {
-                treeNodeStack.push(cur);
-                cur = cur.left;
-            }
-            int val = cur.val;
-            if (val <= inorder) return false;
-            inorder = val;
-            cur = cur.right;
-
-
-        }
         return false;
     }
 }
