@@ -1,11 +1,27 @@
 package com.datastructure.tree;
 
+import com.datastructure.tree.again.PostOrderSolution;
+
+import java.util.List;
+
 /**
  * @Author: BryantCong
  * @Date: 2019/12/16 17:34
  * @Description:
  */
 public class BuildTreeSolution {
+
+    public static void main(String[] args) {
+        int[] postorder = new int[]{3, 4, 2, 6, 5, 1};
+        int[] inorder = new int[]{3, 2, 4, 1, 6, 5};
+        BuildTreeSolution buildTreeSolution = new BuildTreeSolution();
+        TreeNode root = buildTreeSolution.buildTree(inorder, postorder);
+        PostOrderSolution postOrderSolution = new PostOrderSolution();
+        List<Integer> res = postOrderSolution.posOrderTraversalIteration(root);
+        for (Integer i : res) {
+            System.out.println(i);
+        }
+    }
 
     public TreeNode buildTree(int[] inorder, int[] postorder) {
         return reConstructBinaryTreeByOrderAndPost(postorder, 0, postorder.length - 1, inorder, 0, inorder.length - 1);
@@ -39,8 +55,8 @@ public class BuildTreeSolution {
         TreeNode root = new TreeNode(post[postEnd]);
         for (int i = inStart; i <= inEnd; i++) {
             if (post[postEnd] == in[i]) {
-                root.left = reConstructBinaryTreeByOrderAndPost(post, postStart, postStart + i - inStart, in, inStart, i - 1);
-                root.right = reConstructBinaryTreeByOrderAndPost(post, postStart + i - inStart + 1, postEnd - 1, in, i + 1, inEnd);
+                root.left = reConstructBinaryTreeByOrderAndPost(post, postStart, postStart + i - inStart - 1, in, inStart, i - 1);
+                root.right = reConstructBinaryTreeByOrderAndPost(post, postStart + i - inStart, postEnd - 1, in, i + 1, inEnd);
                 break;
             }
         }
