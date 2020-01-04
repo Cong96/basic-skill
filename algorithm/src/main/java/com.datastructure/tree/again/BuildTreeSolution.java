@@ -26,7 +26,9 @@ public class BuildTreeSolution {
     public TreeNode buildTree(int[] inorder, int[] postorder) {
         return reConstructBinaryTreeByOrderAndPost(inorder, 0, inorder.length - 1, postorder, 0, postorder.length - 1);
     }
-
+    public TreeNode buildTree1(int[] inorder, int[] preOrder) {
+        return reConstructBinaryTreeByOrderAndPost(inorder, 0, inorder.length - 1, preOrder, 0, preOrder.length - 1);
+    }
     public TreeNode reConstructBinaryTreeByOrderAndPost(int[] inorder, int inStart, int inEnd, int[] postorder, int postStart, int postEnd) {
         //结束条件
         if (inStart > inEnd || postStart > postEnd) {
