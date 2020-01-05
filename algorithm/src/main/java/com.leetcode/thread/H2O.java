@@ -52,7 +52,7 @@ public class H2O {
     private Semaphore oSempphore = new Semaphore(0);
 
     public void hydrogen(Runnable releaseHydrogen) throws InterruptedException {
-        s1.acquire(1);
+        s1.acquire(1); //保证只有2个H线程进入执行
         hSemaphore.release(1);
         oSempphore.acquire(2);
         // releaseHydrogen.run() outputs "H". Do not change or remove this line.
@@ -61,7 +61,7 @@ public class H2O {
     }
 
     public void oxygen(Runnable releaseOxygen) throws InterruptedException {
-        s2.acquire(1);
+        s2.acquire(1);// 保证只有1个O线程进入执行
         oSempphore.release(2);
         hSemaphore.acquire(2);
         // releaseOxygen.run() outputs "O". Do not change or remove this line.

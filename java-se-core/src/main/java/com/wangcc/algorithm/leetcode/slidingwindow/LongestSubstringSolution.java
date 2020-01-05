@@ -52,13 +52,14 @@ public class LongestSubstringSolution {
         while (right < s.length()) {
             char rightChar = s.charAt(right);
             windows.put(rightChar, windows.getOrDefault(rightChar, 0) + 1);
-            right++;
             while (windows.get(rightChar) > 1) {
                 char leftChar = s.charAt(left);
                 windows.put(leftChar, windows.get(leftChar) - 1);
                 left++;
             }
-            max = Math.max(max, right - left);
+            max = Math.max(max, right - left + 1);
+            right++;
+
         }
         return max;
     }

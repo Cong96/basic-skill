@@ -1,8 +1,7 @@
-package com.wangcc.algorithm.leetcode.slidingwindow;
+package com.leetcode.slidingwindow;
 
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -48,51 +47,45 @@ import java.util.Map;
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 public class FindAnagramsSolution {
-
     public static void main(String[] args) {
-        FindAnagramsSolution findAnagramsSolution = new FindAnagramsSolution();
-        List<Integer> result = findAnagramsSolution.findAnagrams("cbaebabacd", "abc");
-        for (Integer i : result) {
-            System.out.println(i);
-        }
+
     }
 
     public List<Integer> findAnagrams(String s, String p) {
-        List<Integer> result = Lists.newArrayList();
-        Map<Character, Integer> needs = Maps.newHashMap();
-        Map<Character, Integer> windows = Maps.newHashMap();
+        List<Integer> res = new ArrayList<>();
+        Map<Character, Integer> windowsMap = new HashMap<>();
+        Map<Character, Integer> needsMap = new HashMap<>();
         for (char c : p.toCharArray()) {
-            needs.put(c, needs.getOrDefault(c, 0) + 1);
+            needsMap.put(c, needsMap.getOrDefault(c, 0) + 1);
         }
+        int left = 0;
         int right = 0;
         int match = 0;
-        int left = 0;
         while (right < s.length()) {
-            char c1 = s.charAt(right);
-            if (needs.containsKey(c1)) {
-                windows.put(c1, windows.getOrDefault(c1, 0) + 1);
-                if (windows.get(c1).equals(needs.get(c1))) {
+            char rightChar = s.charAt(right);
+            if (needsMap.containsKey(rightChar)) {
+                windowsMap.put(rightChar, windowsMap.getOrDefault(rightChar, 0) + 1);
+                if (windowsMap.get(rightChar).equals(needsMap.get(rightChar))) {
                     match++;
                 }
-            }
-            while (match == needs.size()) {
-                //不同的是这一块的处理，其他关于滑动窗口的，都可以使用该模板解决问题
-                if (right - left + 1 == p.length()) {
-                    result.add(left);
-                }
-                char c2 = s.charAt(left);
-                if (needs.containsKey(c2)) {
-                    windows.put(c2, windows.get(c2) - 1);
-                    if (windows.get(c2) < needs.get(c2)) {
-                        match--;
+                while (match == needsMap.size()) {
+                    if (right - left + 1 == p.length()) {
+                        res.add(left);
                     }
+                    char leftChar = s.charAt(left);
+                    if (needsMap.containsKey(leftChar)) {
+                        windowsMap.put(leftChar, windowsMap.get(leftChar) - 1);
+                        if (windowsMap.get(leftChar) < needsMap.get(leftChar)) {
+                            match--;
+                        }
+                    }
+                    left++;
                 }
-                left++;
+                right++;
             }
-            right++;
-
         }
+        return res;
 
-        return result;
     }
+
 }
