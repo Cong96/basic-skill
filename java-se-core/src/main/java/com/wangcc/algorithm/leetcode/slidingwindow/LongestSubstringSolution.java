@@ -45,6 +45,7 @@ public class LongestSubstringSolution {
         if (s == null || s.length() == 0) {
             return 0;
         }
+
         Map<Character, Integer> windows = Maps.newHashMap();
         int right = 0;
         int left = 0;

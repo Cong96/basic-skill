@@ -23,8 +23,8 @@ public class LinkedNodeTwoNodeReverseSolution {
         node5.next = node6;
         node6.next = node7;
 
-        LinkedNodeTwoNodeReverseSolution linkedNodeTwoNodeReverseSolution=new LinkedNodeTwoNodeReverseSolution();
-        LinkNode node =linkedNodeTwoNodeReverseSolution.reverse(node1);
+        LinkedNodeTwoNodeReverseSolution linkedNodeTwoNodeReverseSolution = new LinkedNodeTwoNodeReverseSolution();
+        LinkNode node = linkedNodeTwoNodeReverseSolution.reverseKGroup(node1, 2);
         while (node != null) {
             System.out.println(node.val);
             node = node.next;
@@ -44,4 +44,35 @@ public class LinkedNodeTwoNodeReverseSolution {
         return newHead;
     }
 
+    public LinkNode reverseKGroup(LinkNode head, int k) {
+        if (head == null) {
+            return head;
+        }
+        LinkNode a, b;
+        a = b = head;
+        for (int i = 0; i < k; i++) {
+            // 不足 k 个，不需要反转，base case
+            if (b == null) return head;
+            b = b.next;
+        }
+        // 反转前 k 个元素
+        LinkNode newHead = reverse(a, b);
+        // 递归反转后续链表并连接起来
+        a.next = reverseKGroup(b, k);
+
+        return newHead;
+    }
+
+    public LinkNode reverse(LinkNode start, LinkNode end) {
+        LinkNode dummyHead = new LinkNode();
+        LinkNode cur = start;
+        //开区间
+        while (cur != end) {
+            LinkNode next = cur.next;
+            cur.next = dummyHead.next;
+            dummyHead.next = cur;
+            cur = next;
+        }
+        return dummyHead.next;
+    }
 }

@@ -9,7 +9,7 @@ package com.datastructure.sort;
  */
 public class DubbleSort {
 
-    public void dubbleSort() {
+    public void dubbleSort(int[] arr) {
 
     }
 }

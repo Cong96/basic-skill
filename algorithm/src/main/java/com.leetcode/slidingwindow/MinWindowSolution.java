@@ -53,6 +53,7 @@ public class MinWindowSolution {
                 }
                 left++;
             }
+            right++;
         }
         return min == Integer.MAX_VALUE ? "" : str.substring(start, start + min);
     }
