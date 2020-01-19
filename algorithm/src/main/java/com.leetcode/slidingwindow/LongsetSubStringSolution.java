@@ -31,6 +31,7 @@ public class LongsetSubStringSolution {
         int longestLength = 1;
         int start = 0;
         //窗口
+
         Map<Character, Integer> windows = new HashMap<>();
         //
         while (right < str.length()) {

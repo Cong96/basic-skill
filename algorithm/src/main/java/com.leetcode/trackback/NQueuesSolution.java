@@ -62,7 +62,7 @@ public class NQueuesSolution {
     private boolean isValid(int column,int row,String [][] board){
         //看同一列是否有冲突
         for(int i=0;i<row;i++){
-            if(board[row][column]=="@"){
+            if(board[row][column]=="Q"){
                 return false;
             }
         }

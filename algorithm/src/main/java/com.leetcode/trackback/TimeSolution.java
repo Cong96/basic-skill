@@ -103,4 +103,9 @@ public class TimeSolution {
             track.pop();
         }
     }
+
+    class TimeResult {
+        public String maxTime;
+        public String minTime;
+    }
 }

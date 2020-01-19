@@ -26,7 +26,7 @@ public class PatternSolution {
         for (int i = 0; i < strs.length; i++) {
             if (reflectMap.containsKey(pattern.charAt(i))) {
                 if (!strs[i].equals(reflectMap.get(pattern.charAt(i)))) {
-                    return true;
+                    return false;
                 }
             } else {
                 if (reflectMap.containsValue(pattern.charAt(i))) {

@@ -15,6 +15,7 @@ public class MinWindowSolution {
     public static void main(String[] args) {
         String s = "ADOBECODEBANC";
         String t = "ABC";
+
     }
 
     public String minWindow(String str, String target) {

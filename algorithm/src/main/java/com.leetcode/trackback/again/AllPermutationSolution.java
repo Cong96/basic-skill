@@ -13,7 +13,15 @@ import java.util.Stack;
 public class AllPermutationSolution {
 
     public static void main(String[] args) {
-
+        int[] nums = new int[]{2, 1, 1, 3};
+        AllPermutationSolution allPermutationSolution = new AllPermutationSolution();
+        List<List<Integer>> res = allPermutationSolution.allPermutation(nums);
+        for(List<Integer> list:res){
+            for(Integer i:list){
+                System.out.print(i);
+            }
+            System.out.println("");
+        }
     }
 
     public List<List<Integer>> allPermutation(int[] nums) {
