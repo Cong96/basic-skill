@@ -1,5 +1,7 @@
 package com.leetcode.reservoirsampling;
 
+import java.util.Random;
+
 /**
  * @Author: BryantCong
  * @Date: 2020/1/19 15:22
@@ -23,18 +25,36 @@ package com.leetcode.reservoirsampling;
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/random-pick-index
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+ *
+ *
+ *
+ * 主要是要理解蓄水池抽样
  */
 public class IndexPickSolution {
+
+
     public static void main(String[] args) {
-
+        int[] nums=new int[]{1,1,2,2,4};
+        IndexPickSolution indexPickSolution=new IndexPickSolution(nums);
+        System.out.println(indexPickSolution.pick(2));
     }
-
+    private int[] nums;
     public IndexPickSolution(int[] nums) {
-
+        this.nums = nums;
     }
 
     public int pick(int target) {
-        return -1;
+        Random r = new Random();
+        int n = 0;
+        int index = 0;
+        for(int i = 0;i < nums.length;i++)
+            if(nums[i] == target){
+                //我们的目标对象中选取。
+                n++;
+                //我们以1/n的概率留下该数据
+                if(r.nextInt() % n == 0) index = i;
+            }
+        return index;
     }
 
 

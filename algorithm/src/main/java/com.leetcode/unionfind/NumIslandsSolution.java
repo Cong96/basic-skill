@@ -1,4 +1,4 @@
-package com.leetcode.reservoirsampling;
+package com.leetcode.unionfind;
 
 /**
  * @Author: BryantCong
