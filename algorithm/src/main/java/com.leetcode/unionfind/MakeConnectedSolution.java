@@ -63,7 +63,7 @@ public class MakeConnectedSolution {
         int fp = find(p);
         int fq = find(q);
         if (fp != fq) {
-            //合并一次，减少一条
+            //合并，代表两个点联通起来了，需要合并的点就少了一个
             nowNeedConnnect--;
             //合并一下，那么合并的依旧？
             if (treeSize[fp] < treeSize[fq]) {
@@ -86,11 +86,20 @@ public class MakeConnectedSolution {
             treeSize[i] = 1;
         }
     }
-
+    /**
+    *
+     *
+     * 0-1   1
+     *
+     * 0-2  1
+     *
+     * 1-2
+    * */
     public int makeConnected(int n, int[][] connections) {
         initUnionFind(n);
         int exitedConnect = 0;
         for (int[] c : connections) {
+            //如果线的两头已经联通，那么这条线是多余的
             if (find(c[0]) == find(c[1])) {
                 exitedConnect++;
                 continue;
