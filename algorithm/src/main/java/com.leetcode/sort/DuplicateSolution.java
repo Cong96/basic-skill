@@ -1,5 +1,8 @@
 package com.leetcode.sort;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @ClassName DuplicateSolution
  * @Description
@@ -21,10 +24,43 @@ package com.leetcode.sort;
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/contains-duplicate-iii
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+ *
+ *
+ * 桶排序的思想来完成
  **/
 public class DuplicateSolution {
 
+    public long getId(long i,long w)
+    {
+        // In Java, `-3 / 5 = 0` and but we need `-3 / 5 = -1`.
+
+        return i<0?(i+1)/w-1:i/w;
+    }
     public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
+        if(t<0){
             return false;
+        }
+        Map<Long,Long> bucketMap=new HashMap<>();
+        long w=t+1;
+        for(int i=0;i<nums.length;i++){
+            long m=getId(nums[i],w);
+            if(bucketMap.containsKey(m)){
+                return true;
+            }
+            if(bucketMap.containsKey(m-1)&&Math.abs(nums[i]-bucketMap.get(m-1))<w){
+                return true;
+            }
+            if(bucketMap.containsKey(m+1)&&Math.abs(nums[i]-bucketMap.get(m+1))<w){
+                return true;
+            }
+            // now bucket m is empty and no almost duplicate in nei***or buckets
+            bucketMap.put(m, (long)nums[i]);
+            if (i >= k){
+                bucketMap.remove(getId(nums[i-k],w));
+            }
+
+
+        }
+        return false;
     }
 }
