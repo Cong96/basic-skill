@@ -39,6 +39,19 @@ package com.leetcode.twopointer;
  * 链接：https://leetcode-cn.com/problems/longest-repeating-character-replacement
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  *
+ *
+ * 这里的while条件需要重新思考下
+ *
+ *
+ * dict的字典用来记录每一个字符出现的次数（在window内）
+ * l，r表示window的左右边界，r< len(s),maxLen记录出现了最多次数的字符，每次更新maxLen，当（r-l+1）-maxLen 也就是window的长度-出现了最多次数的字符，与k（可以改变的字符的个数）相比，如果大于k说明，window已经不满足要求了，需要从左边缩window
+ * 更新res，max（res，len（window））
+ * r++不断扩window
+ *
+ *
+ *
+ *  AABBBCCBBBAAAAAAA
+ *
  **/
 public class CharacterReplacementSolution {
     public static void main(String[] args) {
@@ -55,13 +68,15 @@ public class CharacterReplacementSolution {
         while(right<length){
             //将右边元素出现的次数加一
             windows[s.charAt(right)-'A']+=1;
-            //找出现在元素出现的最大次数
+            //找出当前出现过的元素中所有元素出现的最大次数
             maxLen=Math.max(maxLen,windows[s.charAt(right)-'A']);
             //如果出现的最大次数加上k还是小于当前的窗口大小，那么就意味着不符合条件，我们要找到一个窗口
             //那么我就需要缩小窗口
             //我们要选择当前窗口下
             while(right-left+1>k+maxLen){
+                    //将窗口的最左侧撤销，为什么撤销最左侧的元素是可行的呢？
                 windows[s.charAt(left)-'A']-=1;
+                //为什么在这里缩小窗口是可以的呢？
                 left++;
             }
             res=Math.max(res,right-left+1);
