@@ -54,6 +54,7 @@ public class RemoveDuplicatesSolution {
             }
             if (count > 2) {
                 moveArray(nums, i, length);
+                //当我们合并两个重复元素，即缩减数组长度时，我们需要操作的原数组的下个元素，实际上就是新数组的当前index
                 length--;
                 i--;
             }

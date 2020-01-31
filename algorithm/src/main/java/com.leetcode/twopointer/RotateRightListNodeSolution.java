@@ -50,7 +50,7 @@ public class RotateRightListNodeSolution {
         ListNode dummyHead = new ListNode(-1);
         dummyHead.next = head;
         ListNode newHeadBefore = dummyHead;
-        //TODO  当时
+        //TODO  这是如何算出来的，并不清楚
         for (int j = 0; j <= n - k % n - 1; j++) {
             newHeadBefore = newHeadBefore.next;
         }
