@@ -36,36 +36,6 @@ import com.datastructure.linkedlist.ListNode;
 public class InsertionSortListSolution {
 
     public ListNode insertionSortList(ListNode head) {
-        //插入排序
-        ListNode dummyHead = new ListNode(-1);
-        ListNode pre = dummyHead;
-        ListNode tail = dummyHead;
-        ListNode curr = head;
-        while (curr != null) {
-            //支持base case head节点
-            if (tail.val < curr.val) {
-                ListNode next = curr.next;
-                curr.next = tail.next;
-                tail.next = curr;
-                curr = next;
-            } else {
-                ListNode next = curr.next;
-                tail.next = curr.next;
-                //覆盖base case
-                //在这段逻辑中，找到的pre是最后一个小于当前节点的节点
-                while (pre != null && pre.next != null && pre.next.val < curr.val) {
-                    //这里已经pre.next;
-                    pre = pre.next;
-                }
-
-                curr.next = pre.next;
-                pre.next = curr;
-
-
-                curr = next;
-
-            }
-        }
-        return dummyHead.next;
+        return null;
     }
 }

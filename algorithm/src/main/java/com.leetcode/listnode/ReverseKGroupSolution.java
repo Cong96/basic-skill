@@ -23,6 +23,7 @@ public class ReverseKGroupSolution {
         ListNode a, b;
         a = b = head;
         //我们要确定下，如果链表总共3个节点，那么我们遍历三次，那么最后b就是null
+        //开区间
         for (int i = 0; i < k; i++) {
             if (b == null) {
                 return head;

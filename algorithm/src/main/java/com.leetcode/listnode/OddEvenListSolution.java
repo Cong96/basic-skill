@@ -30,7 +30,55 @@ import com.datastructure.linkedlist.ListNode;
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  **/
 public class OddEvenListSolution {
+
+    public static void main(String[] args) {
+        ListNode head = new ListNode(1);
+        ListNode l1 = new ListNode(2);
+        head.next = l1;
+        ListNode l2 = new ListNode(3);
+        l1.next = l2;
+        ListNode l3 = new ListNode(4);
+        l2.next = l3;
+        ListNode l4 = new ListNode(5);
+        l3.next = l4;
+        ListNode l5 = new ListNode(6);
+        l4.next = l5;
+        ListNode l6 = new ListNode(7);
+        l5.next = l6;
+        ListNode l7 = new ListNode(8);
+        l6.next = l7;
+        OddEvenListSolution oddEvenListSolution = new OddEvenListSolution();
+        ListNode res = oddEvenListSolution.oddEvenList(head);
+        System.out.println(res.val);
+
+    }
+
+
     public ListNode oddEvenList(ListNode head) {
-        return null;
+        ListNode evenHead = new ListNode(-1);
+        ListNode oddHead = new ListNode(-1);
+        ListNode odd = oddHead;
+        ListNode even = evenHead;
+        ListNode curr = head;
+        int i = 1;
+        while (curr != null) {
+            if (i % 2 == 1) {
+                ListNode next = curr.next;
+                odd.next = curr;
+                //切断与原链表的联系
+                curr.next = null;
+                odd = odd.next;
+                curr = next;
+            } else {
+                ListNode next = curr.next;
+                even.next = curr;
+                curr.next = null;
+                even = even.next;
+                curr = next;
+            }
+            i++;
+        }
+        odd.next = evenHead.next;
+        return oddHead.next;
     }
 }

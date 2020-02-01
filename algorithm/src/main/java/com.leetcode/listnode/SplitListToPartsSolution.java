@@ -54,7 +54,32 @@ public class SplitListToPartsSolution {
     }
 
     public ListNode[] splitListToParts(ListNode root, int k) {
+        ListNode curr = root;
+        int sum = 0;
+        while (curr != null) {
+            sum++;
+            curr = curr.next;
+        }
+        int averageLength = sum / k;
+        int moreoneNum = sum % k;
+        ListNode[] res = new ListNode[k];
+        curr = root;
+        for (int i = 0; i < k; i++) {
+            ListNode head = curr;
+            //注意要减一
+            for (int j = 0; j < averageLength + (i < moreoneNum ? 1 : 0) - 1; j++) {
+                if (curr != null) {
+                    curr = curr.next;
+                }
+            }
+            if (curr != null) {
+                ListNode next = curr.next;
+                curr.next = null;
+                curr = next;
+            }
 
-        return null;
+            res[i] = head;
+        }
+        return res;
     }
 }
