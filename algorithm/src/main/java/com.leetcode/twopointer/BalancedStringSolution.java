@@ -71,7 +71,7 @@ public class BalancedStringSolution {
         while (right < length) {
             count[s.charAt(right) - 'A'] -= 1;
             //窗口外的字符串保持符合条件
-            //这里的条件是left<length为什么呢
+            //TODO 这里的条件是left<length为什么呢
             while (check(count, length)) {
                 res = Math.min(res, right - left + 1);
                 count[s.charAt(left) - 'A'] += 1;

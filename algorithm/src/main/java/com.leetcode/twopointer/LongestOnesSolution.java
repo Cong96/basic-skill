@@ -55,12 +55,14 @@ public class LongestOnesSolution {
             if (A[right] == 1) {
                 count++;
             }
+            //处理掉不满足条件的情况
             while (right - left + 1 > K + count) {
                 if (A[left] == 1) {
                     count--;
                 }
                 left++;
             }
+            //得到的是满足条件的情况
             max = Math.max(max, right - left + 1);
             right++;
         }
