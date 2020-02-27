@@ -30,6 +30,8 @@ package com.leetcode.twopointer;
  **/
 public class ThreeSumMultiSolution {
     public int threeSumMulti(int[] A, int target) {
+        int MOD = 1_000_000_007;
+
         return -1;
     }
 }

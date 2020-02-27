@@ -51,7 +51,6 @@ public class ThreeSumSolution {
                     left++;
                 }
                 else{
-
                     right--;
                 }
             }

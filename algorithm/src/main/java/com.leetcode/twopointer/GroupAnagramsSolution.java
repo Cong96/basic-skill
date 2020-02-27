@@ -1,6 +1,6 @@
 package com.leetcode.twopointer;
 
-import java.util.List;
+import java.util.*;
 
 /**
  * @ClassName GroupAnagramsSolution
@@ -36,7 +36,28 @@ public class GroupAnagramsSolution {
 
     public List<List<String>> groupAnagrams(String[] strs) {
         //TODO
-        return null;
+        Map<String, List<String>> resMap = new HashMap<>();
+        for (String s : strs) {
+
+            char[] chars = s.toCharArray();
+            Arrays.sort(chars);
+            String orderKey = new String(chars);
+            if(resMap.containsKey(orderKey)){
+                resMap.get(orderKey).add(s);
+            }
+            else{
+                List<String> list=new ArrayList<>();
+                list.add(s);
+                resMap.put(orderKey,list);
+            }
+        }
+        List<List<String>> res=new ArrayList<>();
+        resMap.entrySet().forEach(
+                stringListEntry -> {
+                    res.add(stringListEntry.getValue());
+                }
+        );
+        return res;
     }
 
 }

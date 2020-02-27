@@ -9,25 +9,7 @@ import java.util.*;
  */
 public class TimeSolution {
     public static void main(String[] args) {
-//        String s1 = "12:34:56";
-//        String s2 = "01:34:56";
-//        if (s1.compareTo(s2) > 0) {
-//            System.out.println(s1);
-//        }
-//        List<Integer> list = new ArrayList<>();
-//        list.add(1);
-//        list.add(2);
-//        list.add(3);
-//        list.add(4);
-//        list.add(5);
-//        list.add(6);
-//
-//        List<String> result = new ArrayList<>();
-//        int i = 0;
-//        while (i < list.size()) {
-//            result.add(list.get(i++) + "" + list.get(i++));
-//        }
-//        System.out.println(String.join(":", result));
+
 
         TimeSolution timeSolution = new TimeSolution();
         int[] nums = new int[]{2, 2, 3, 0, 5, 7};
@@ -77,7 +59,7 @@ public class TimeSolution {
                 continue;
             }
             if (nums[i] < 0) {
-                continue;
+                break;
             }
             if (track.size() % 2 == 0) {
                 if (track.size() == 0) {

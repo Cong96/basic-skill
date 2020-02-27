@@ -34,13 +34,15 @@ public class NumSubarrayProductLessThanK {
         int length = nums.length;
         int currMutil = 1;
         int res = 0;
-        for (int right = 0; right < left; right++) {
+        for (int right = 0; right < length; right++) {
             currMutil = currMutil * nums[right];
+            //2 3 10
             while (currMutil >= k && left <= right) {
                 currMutil = currMutil / nums[left];
                 left++;
             }
-            res = right - left + 1;
+            //TODO 主要是这个数学我没整明白
+            res+= right - left + 1;
         }
         return res;
     }

@@ -30,6 +30,7 @@ public class RemoveNthFromEndSolution {
             first = first.next;
             sencond = sencond.next;
         }
+        //找到要删除的节点的头一个节点 second
         sencond.next = sencond.next.next;
         return dummyHead.next;
     }

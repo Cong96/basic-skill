@@ -37,7 +37,7 @@ public class AllPermutationSolution {
     private void allPermutation(int[] nums, Stack<Integer> track, boolean[] used, List<List<Integer>> res) {
         //终止条件
         if (nums.length == track.size()) {
-            res.add(new ArrayList<Integer>(track));
+            res.add(new ArrayList<>(track));
             return;
         }
         for (int i = 0; i < nums.length; i++) {
