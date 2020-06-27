@@ -14,7 +14,6 @@
         <module>algorithm</module>
         <module>resttemplate-demo</module>
         <module>rest-demo</module>
-        <module>mq-demo</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -33,7 +32,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-source-plugin</artifactId>
-                    <version>2.2.1</version>
+                    <version>3.6.3</version>
                     <configuration>
                         <attach>true</attach>
                     </configuration>
